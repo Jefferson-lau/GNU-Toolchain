@@ -1,0 +1,8 @@
+Linux version 5.8.0-61-generic (buildd@lgw01-amd64-013) (gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #68~20.04.1-Ubuntu SMP Wed Jun 30 10:32:39 UTC 2021
+Linux ubuntu 5.8.0-61-generic #68~20.04.1-Ubuntu SMP Wed Jun 30 10:32:39 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+/home/ljw/RISCV/b_rv64_newlib/bin/:/home/ljw/RISCV/b_rv64_newlib/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+/home/ljw/RISCV
+origin	https://github.com/riscv/riscv-gnu-toolchain (fetch)
+origin	https://github.com/riscv/riscv-gnu-toolchain (push)
+* master
+995778bd3315faddd709948190ca76fb10b43188
