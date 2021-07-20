@@ -46,9 +46,8 @@ RISCV GNU GCC 回归测试
 ```
 
 1.3：安装环境依赖(如果还缺少库，请自行进行添加)。
-
-```sudo apt install autoconf automake autotools-dev curl python3 libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev cmake ninja-build pkg-config libglib2.0-dev libpixman-1-dev python git libfdt-dev libncurses5-dev libncursesw5-dev device-tree-compiler
-
+```
+sudo apt install autoconf automake autotools-dev curl python3 libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev cmake ninja-build pkg-config libglib2.0-dev libpixman-1-dev python git libfdt-dev libncurses5-dev libncursesw5-dev device-tree-compiler
 ```
 
 1.4：选择一个目录，作为RISC-V编译程序的存放位置。然后设置环境变量，此处的~/RISCV可以替换。注意，此处的变量需要在每次登陆时重新设置（或设置环境变量，Ubuntu系统的配置）。
@@ -142,7 +141,8 @@ main:
 
 ```
 #运行gcc回归测试用例进行测试
-$ make report-gcc-newlib 2>&1|tee b_rv64_newlib-reportgccnewlib-20210720.log
+ljw@ubuntu:~/RISCV/riscv-gnu-toolchain/build/newlib$ make report-gcc-newlib 2>&1|tee b_rv64_newlib-reportgccnewlib-20210720.log
+
 ```
 
 ### 2.2gcc回归测试预期结果
@@ -168,9 +168,52 @@ $ make report-gcc-newlib 2>&1|tee b_rv64_newlib-reportgccnewlib-20210720.log
 # of expected failures		706
 # of unsupported tests		9570
 
+```
 
+### 2.3执行binutils回归测试
+运行binutils回归测试用例进行测试
+```
+ljw@ubuntu:~/RISCV/riscv-gnu-toolchain/build/newlib$ make report-binutils-newlib 2>&1|tee b_rv64_newlib-reportbinutilsnewlib-20210720.log
+```
+### 2.4binutils回归测试预期结果
+当命令窗口输出停止刷新，并出现========= Summary of binutils testsuite =========表示回归测试已经执行完成。
+
+翻看输出的 b_rv64_newlib-reportbinutilsnewlib-20210701.log文档，搜索Summary关键词，能够找到binutils Summary、 gas Summary 、ld Summary 、Summary of gcc testsuite 等信息。如下所示：
+```
+		=== binutils Summary ===
+
+# of expected passes		220
+# of expected failures		1
+# of unsupported tests		9
+
+--------------------------------------------------------------------------
+		=== gas Summary ===
+
+# of expected passes		337
+# of expected failures		15
+# of unsupported tests		13
+-----------------------------------------------------------------------
+		=== ld Summary ===
+
+# of expected passes		546
+# of unexpected failures	2
+# of expected failures		11
+# of unsupported tests		208
+--------------------------------------------------------------------
+
+               ========= Summary of binutils testsuite =========
+                            | # of unexpected case
+                            |     binutils |           ld |          gas |
+ rv64imafdc/  lp64d/ medlow |            0 |            0 |            0 |
 
 
 ```
+#### 至此，我已经大致熟悉了会给测试的流程和命令。
 
-9、测试结果分析与测试报告在 https://github.com/xijing21/tarsier-testresult-gnu/ 中，找到上一次的【b_rv64_newlib-20210620】测试结果，将两次的测试结果按照《gnu-regression-b_rv64_newlib-report.docx》要求填写测试结果，并对比两次的测试结果数据，填写测试结果。
+3.测试结果分析与测试报告，找到上一次的测试结果，将两次的测试结果按照《gnu-regression-b_rv64_newlib-report.docx》要求填写测试结果，并对比两次的测试结果数据，填写测试结果。
+
+最后附上一个我个人遇到的问题：![image](https://user-images.githubusercontent.com/55994081/126284150-44ff6d19-bee4-4046-802d-c680622727cb.png)
+
+解决办法：![image](https://user-images.githubusercontent.com/55994081/126284275-9aa899ed-feb7-4e13-b169-69b81015b652.png)
+##### 本文到此结束！
+
