@@ -208,7 +208,7 @@ ljw@ubuntu:~/RISCV/riscv-gnu-toolchain/build/newlib$ make report-binutils-newlib
 
 
 ```
-#### 至此，我已经大致熟悉了会给测试的流程和命令。
+#### 至此，我已经大致熟悉了测试的流程和命令。
 
 3.测试结果分析与测试报告，找到上一次的测试结果，将两次的测试结果按照《gnu-regression-b_rv64_newlib-report.docx》要求填写测试结果，并对比两次的测试结果数据，填写测试结果。
 
